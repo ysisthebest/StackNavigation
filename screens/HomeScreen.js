@@ -1,8 +1,8 @@
 import React from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text } from 'react-native';
 import styles from '../styles';
 
-export default function HomeScreen({ navigation }) {
+export default function HomeScreen() {
   return (
     <View style={styles.homeContainer}>
 
@@ -13,13 +13,6 @@ export default function HomeScreen({ navigation }) {
       <Text style={styles.homeDesc}>
         Bạn đã đăng nhập thành công vào ứng dụng
       </Text>
-
-      <TouchableOpacity
-        style={styles.logoutButton}
-        onPress={() => navigation.navigate("Login")}
-      >
-        <Text style={styles.buttonText}>Đăng xuất</Text>
-      </TouchableOpacity>
 
     </View>
   );

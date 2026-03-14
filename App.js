@@ -1,27 +1,53 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import LoginScreen from './screens/LoginScreen';
-import HomeScreen from './screens/HomeScreen';
+import MainTabs from './navigations/MainTabs';
+
+import { AppProvider, AppContext } from './contexts/AppContext';
 
 const Stack = createNativeStackNavigator();
 
-export default function App() {
+function AuthStack() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Login"
+        component={LoginScreen}
+        options={{ title: "Đăng nhập" }}
+      />
+    </Stack.Navigator>
+  );
+}
+
+function MainStack() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="MainTabs"
+        component={MainTabs}
+        options={{ headerShown: false }}
+      />
+    </Stack.Navigator>
+  );
+}
+
+function RootNavigation() {
+
+  const { isLoggedIn } = useContext(AppContext);
+
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
-          name="Login"
-          component={LoginScreen}
-          options={{ title: "Đăng nhập" }}
-        />
-        <Stack.Screen
-          name="Home"
-          component={HomeScreen}
-          options={{ title: "Trang chủ" }}
-        />
-      </Stack.Navigator>
+      {isLoggedIn ? <MainStack /> : <AuthStack />}
     </NavigationContainer>
+  );
+}
+
+export default function App() {
+  return (
+    <AppProvider>
+      <RootNavigation />
+    </AppProvider>
   );
 }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import {
   View,
   Text,
@@ -10,8 +10,11 @@ import {
 
 import styles from '../styles';
 import { validatePhone, formatPhone } from '../validate';
+import { AppContext } from '../contexts/AppContext';
 
-export default function LoginScreen({ navigation }) {
+export default function LoginScreen() {
+
+  const { setIsLoggedIn } = useContext(AppContext);
 
   const [phone, setPhone] = useState('');
   const [message, setMessage] = useState('');
@@ -38,7 +41,8 @@ export default function LoginScreen({ navigation }) {
       return;
     }
 
-    navigation.navigate("Home");
+    // Đăng nhập thành công
+    setIsLoggedIn(true);
   };
 
   return (
