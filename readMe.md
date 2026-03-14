@@ -14,7 +14,7 @@
 ![Kết quả chạy](./assets/loginscreen.jpg)
 
 ### Hình ảnh HomeScreen
-![Kết quả chạy](./assets/HomeScreen.jpg)
+![Kết quả chạy](./assets/HomeScreen1.jpg)
 
 ### Hình ảnh ProfileScreen
 ![Kết quả chạy](./assets/ProfileScreen.jpg)
